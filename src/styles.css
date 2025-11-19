@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 
 @import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -96,39 +98,5 @@ code {
 @layer base {
   body {
     @apply bg-background text-foreground;
-    position: relative;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background-image: 
-      radial-gradient(circle at 20% 30%, oklch(0.65 0.18 235 / 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 80% 60%, oklch(0.55 0.15 150 / 0.06) 0%, transparent 40%),
-      radial-gradient(circle at 50% 80%, oklch(0.65 0.18 235 / 0.05) 0%, transparent 40%);
-    animation: shimmer 20s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  @keyframes shimmer {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: translate(-5%, -5%) scale(1.05);
-      opacity: 0.8;
-    }
-  }
-
-  body > * {
-    position: relative;
-    z-index: 1;
   }
 }
