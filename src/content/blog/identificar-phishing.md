@@ -88,7 +88,7 @@ Problemas técnicos inventados que requieren "acción inmediata".
 
 - Marca el correo como spam/phishing
 - Elimínalo
-- Reporta a soporte@unad.edu.co si suplantaba a la UNAD
+- Reporta en medios oficiales de la institución
 
 ## ⚠️ Ya hiciste clic y diste tu información
 
@@ -152,7 +152,6 @@ Google Jigsaw también ofrece:
 - 🔗 [Google Safe Browsing - Verificador de URLs](https://transparencyreport.google.com/safe-browsing/search)
 - 🔗 [ColCERT - Reportar incidentes de seguridad](https://www.colcert.gov.co/)
 - 🔗 [CRC - Comisión de Regulación de Comunicaciones](https://www.crcom.gov.co/)
-- 📧 Reportar a UNAD: soporte@unad.edu.co
 
 ## Regla de oro
 

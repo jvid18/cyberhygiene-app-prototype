@@ -193,4 +193,3 @@ Si la información es importante, no arriesgues. Usa datos móviles o una VPN.
 **Información y reportes:**
 
 - 🔗 [En TIC Confío - Seguridad en internet](https://enticconfio.gov.co/)
-- 📧 Reportar incidentes: soporte@unad.edu.co
