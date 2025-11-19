@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as CursosRouteImport } from './routes/cursos'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as CursoContrasenasRouteImport } from './routes/curso/contrasenas'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 
 const CursosRoute = CursosRouteImport.update({
@@ -29,6 +30,11 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CursoContrasenasRoute = CursoContrasenasRouteImport.update({
+  id: '/curso/contrasenas',
+  path: '/curso/contrasenas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cursos': typeof CursosRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/curso/contrasenas': typeof CursoContrasenasRoute
   '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cursos': typeof CursosRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/curso/contrasenas': typeof CursoContrasenasRoute
   '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,28 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cursos': typeof CursosRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/curso/contrasenas': typeof CursoContrasenasRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cursos' | '/blog/$slug' | '/blog'
+  fullPaths: '/' | '/cursos' | '/blog/$slug' | '/curso/contrasenas' | '/blog'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cursos' | '/blog/$slug' | '/blog'
-  id: '__root__' | '/' | '/cursos' | '/blog/$slug' | '/blog/'
+  to: '/' | '/cursos' | '/blog/$slug' | '/curso/contrasenas' | '/blog'
+  id:
+    | '__root__'
+    | '/'
+    | '/cursos'
+    | '/blog/$slug'
+    | '/curso/contrasenas'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CursosRoute: typeof CursosRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  CursoContrasenasRoute: typeof CursoContrasenasRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
@@ -92,6 +108,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/curso/contrasenas': {
+      id: '/curso/contrasenas'
+      path: '/curso/contrasenas'
+      fullPath: '/curso/contrasenas'
+      preLoaderRoute: typeof CursoContrasenasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/$slug': {
       id: '/blog/$slug'
       path: '/blog/$slug'
@@ -106,6 +129,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CursosRoute: CursosRoute,
   BlogSlugRoute: BlogSlugRoute,
+  CursoContrasenasRoute: CursoContrasenasRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
