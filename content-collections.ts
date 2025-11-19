@@ -16,7 +16,26 @@ const posts = defineCollection({
     tags: z.array(z.string()).optional(),
   }),
   transform: async (document, context) => {
-    const html = await compileMarkdown(context, document);
+    const html = await compileMarkdown(context, document, {
+      rehypePlugins: [
+        () => (tree) => {
+          // Add target="_blank" and rel="noopener noreferrer" to external links
+          const visit = (node: any) => {
+            if (node.type === 'element' && node.tagName === 'a') {
+              const href = node.properties?.href;
+              if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+                node.properties.target = '_blank';
+                node.properties.rel = 'noopener noreferrer';
+              }
+            }
+            if (node.children) {
+              node.children.forEach(visit);
+            }
+          };
+          visit(tree);
+        },
+      ],
+    });
 
     return { ...document, html };
   },
